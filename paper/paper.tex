@@ -6,7 +6,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{The Name of the Title is Hope}
+\title{State-Machine Qualia and it's effects on Context-Free Language Reachability}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -14,10 +14,10 @@
 %% Of note is the shared affiliation of the first two authors, and the
 %% "authornote" and "authornotemark" commands
 %% used to denote shared contribution to the research.
-\author{TBD}
-\email{tbd@colorado.edu}
-\author{TBD}
-\email{tbd@colorado.edu}
+\author{Henri Malahieude}
+\email{henri.malahieude@colorado.edu}
+%%\author{TBD}
+%%\email{tbd@colorado.edu}
 \affiliation{%
   \institution{University of Colorado Boulder}
   \country{USA}
@@ -28,7 +28,15 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  TBD
+	Since Thomas Reps' paper, Program Analysis via Graph Reachability~\cite{}, 
+	much work has been devoted to optimizing the reachability solver~\cite{},
+	refining the graph construction process~\cite{},
+	and finding the ordering of analysis questions with respect to graph reachability ~\cite{}.
+	However, there has been no study yet, to our knowledge, of the types of analysis for which Context-Free Language Reachability (CFLR) cannot be deployed in
+	the traditional techniques of a Dyck-Language and the Finite State-Machine Reachability Solver.
+	For example, dominance of one basic block of the next is not an analysis for which Dyck-Reachability has been employed for, nor is there has there been work for why that is.
+	This work seeks to establish the limitations of CFLR for program analysis by drawing a relationship between the languages employed for each question, 
+	thus the state-machine required to compute the reachability answer, and the analysis question of interest.
 \end{abstract}
 
 %%
@@ -37,18 +45,32 @@
 \maketitle
 
 \section{Introduction}
+\label{sec:intro}
+TODO
 
 \section{Overview}
+\label{sec:over}
+TODO
 
-\section{[Contribution 1]}
+\section{Motivating Examples}
+\label{sec:examples}
+TODO
 
-\section{[Contribution 2]}
+\section{State-Machines for Reachability}
+\label{sec:sm}
+TODO
 
-\section{Evaluation}
+\section{Analyses and Languages}
+\label{sec:analyses}
+TODO
 
 \section{Related Work}
+\label{sec:related}
+TODO
 
 \section{Conclusion}
+\label{sec:conclusion}
+TODO
 
 %%
 %% The acknowledgments section is defined using the "acks" environment
@@ -56,7 +78,7 @@
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
 \begin{acks}
-TBD
+TODO
 \end{acks}
 
 %%
