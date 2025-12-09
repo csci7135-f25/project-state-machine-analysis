@@ -40,7 +40,7 @@ numpages = {25},
 keywords = {CFL-reachability, graph simplification, recursive state machines}
 }
 
-@article{10.1145/3591233,
+@article{lei_pldi_2023,
 author = {Lei, Yuxiang and Sui, Yulei and Tan, Shin Hwei and Zhang, Qirun},
 title = {Recursive State Machine Guided Graph Folding for Context-Free Language Reachability},
 year = {2023},
@@ -59,7 +59,7 @@ numpages = {25},
 keywords = {CFL-reachability, graph simplification, recursive state machines}
 }
 
-@article{10.1145/1075382.1075387,
+@article{alur_toplas_2005,
 author = {Alur, Rajeev and Benedikt, Michael and Etessami, Kousha and Godefroid, Patrice and Reps, Thomas and Yannakakis, Mihalis},
 title = {Analysis of recursive state machines},
 year = {2005},
@@ -77,4 +77,70 @@ month = jul,
 pages = {786–818},
 numpages = {33},
 keywords = {temporal logic, recursive state machines, pushdown automata, program analysis, model checking, context-free languages, Software verification}
+}
+
+@INPROCEEDINGS{heintze_lics_1997,
+  author={Heintze, N. and McAllester, D.},
+  booktitle={Proceedings of Twelfth Annual IEEE Symposium on Logic in Computer Science}, 
+  title={On the cubic bottleneck in subtyping and flow analysis}, 
+  year={1997},
+  volume={},
+  number={},
+  pages={342-351},
+  keywords={Algorithm design and analysis;Automatic control;Automata},
+  doi={10.1109/LICS.1997.614960}}
+
+@inproceedings{zhang_pldi_2013,
+author = {Zhang, Qirun and Lyu, Michael R. and Yuan, Hao and Su, Zhendong},
+title = {Fast algorithms for Dyck-CFL-reachability with applications to alias analysis},
+year = {2013},
+isbn = {9781450320146},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2491956.2462159},
+doi = {10.1145/2491956.2462159},
+abstract = {The context-free language (CFL) reachability problem is a well-known fundamental formulation in program analysis. In practice, many program analyses, especially pointer analyses, adopt a restricted version of CFL-reachability, Dyck-CFL-reachability, and compute on edge-labeled bidirected graphs. Solving the all-pairs Dyck-CFL-reachability on such bidirected graphs is expensive. For a bidirected graph with n nodes and m edges, the traditional dynamic programming style algorithm exhibits a subcubic time complexity for the Dyck language with k kinds of parentheses. When the underlying graphs are restricted to bidirected trees, an algorithm with O(n log n log k) time complexity was proposed recently. This paper studies the Dyck-CFL-reachability problems on bidirected trees and graphs. In particular, it presents two fast algorithms with O(n) and O(n + m log m) time complexities on trees and graphs respectively. We have implemented and evaluated our algorithms on a state-of-the-art alias analysis for Java. Results on standard benchmarks show that our algorithms achieve orders of magnitude speedup and consume less memory.},
+booktitle = {Proceedings of the 34th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {435–446},
+numpages = {12},
+keywords = {alias analysis, dyck-cfl-reachability},
+location = {Seattle, Washington, USA},
+series = {PLDI '13}
+}
+
+@inproceedings{kodumal_pldi_2004,
+author = {Kodumal, John and Aiken, Alex},
+title = {The set constraint/CFL reachability connection in practice},
+year = {2004},
+isbn = {1581138075},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/996841.996867},
+doi = {10.1145/996841.996867},
+abstract = {Many program analyses can be reduced to graph reachability problems involving a limited form of context-free language reachability called Dyck-CFL reachability. We show a new reduction from Dyck-CFL reachability to set constraints that can be used in practice to solve these problems. Our reduction is much simpler than the general reduction from context-free language reachability to set constraints. We have implemented our reduction on top of a set constraints toolkit and tested its performance on a substantial polymorphic flow analysis application.},
+booktitle = {Proceedings of the ACM SIGPLAN 2004 Conference on Programming Language Design and Implementation},
+pages = {207–218},
+numpages = {12},
+keywords = {context-free language reachability, flow analysis, set constraints, type qualifiers},
+location = {Washington DC, USA},
+series = {PLDI '04}
+}
+
+@article{lei_pldi_2024,
+author = {Lei, Yuxiang and Bossut, Camille and Sui, Yulei and Zhang, Qirun},
+title = {Context-Free Language Reachability via Skewed Tabulation},
+year = {2024},
+issue_date = {June 2024},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {8},
+number = {PLDI},
+url = {https://doi.org/10.1145/3656451},
+doi = {10.1145/3656451},
+abstract = {Context-free language reachability (CFL-reachability) is a prominent model for formulating program analysis problems. Almost all CFL-reachability algorithms are based on the Reps-Horwitz-Sagiv (RHS) tabulation. In essence, the RHS tabulation, based on normalized context-free grammars, is similar to the CYK algorithm for CFL-parsing. Consider a normalized rule S::=A&nbsp;B and a CFL-reachability problem instance of computing S-edges in the input graph. The RHS tabulation obtains all summary edges (i.e., S-, A-, and B-edges) based on the grammar rules. However, many A- and B-edges are wasted because only a subset of those edges eventually contributes to generating S-edges in the input graph.This paper proposes a new tabulation strategy for speeding up CFL-reachability by eliminating wasted and unnecessary summary edges. We particularly focus on recursive nonterminals. Our key technical insight is that the wasted edge generations and insertions caused by recursive nonterminals can be avoided by modifying the parse trees either statically (by transforming the grammar) or dynamically (using a specialized online CFL-reachability solver). For example, if a recursive nonterminal B, generated by a rule B::=BX, appears on the right-hand side of a rule S::=AB, we can make S recursive (by introducing a new rule S::=SX) and eliminate the original recursive rule (B::=BX). Due to the rule S::=SX, the shapes of the parse trees associated with the left-hand-side nonterminal S become more “skewed”. Thus, we name our approach skewed tabulation for CFL-reachability.Skewed tabulation can significantly improve the scalability of CFL-reachability by reducing wasted and unnecessary summary edges. We have implemented skewed tabulation and applied the corresponding CFL- reachability algorithm to an alias analysis, a value-flow analysis, and a taint analysis. Our extensive evaluation based on SPEC 2017 benchmarks yields promising results. For the three client analyses, CFL-reachability based on skewed tabulation can achieve 3.34\texttimes{}, 1.13\texttimes{} and 2.05\texttimes{} speedup over the state-of-the-art RHS-tabulation- based CFL-reachability solver and consume 60.05\%, 20.38\% and 63.06\% less memory, respectively. Furthermore, the cost of grammar transformation for skewed tabulation is negligible, typically taking less than one second.},
+journal = {Proc. ACM Program. Lang.},
+month = jun,
+articleno = {221},
+numpages = {24},
+keywords = {CFL-reachability, tabulation schemes, performance}
 }
