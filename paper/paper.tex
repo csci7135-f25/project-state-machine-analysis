@@ -23,20 +23,21 @@
   \country{USA}
 }
 
-
 %%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-	Since Thomas Reps' paper, Program Analysis via Graph Reachability~\cite{}, 
-	much work has been devoted to optimizing the reachability solver~\cite{},
-	refining the graph construction process~\cite{},
-	and finding the ordering of analysis questions with respect to graph reachability ~\cite{}.
+	Since Thomas Reps' paper, Program Analysis via Graph Reachability~\cite{reps_ilps_1997}, 
+	much work has been devoted to optimizing the reachability solver~\cite{zhang_pldi_2013,lei_pldi_2024},
+	refining the graph construction process~\cite{lei_pldi_2023},
+	and finding the ordering of analysis questions with respect to graph reachability ~\cite{ding_sas_2023}.
 	However, there has been no study yet, to our knowledge, of the types of analysis for which Context-Free Language Reachability (CFLR) cannot be deployed in
-	the traditional techniques of a Dyck-Language and the Finite State-Machine Reachability Solver.
-	For example, dominance of one basic block of the next is not an analysis for which Dyck-Reachability has been employed for, nor is there has there been work for why that is.
-	This work seeks to establish the limitations of CFLR for program analysis by drawing a relationship between the languages employed for each question, 
-	thus the state-machine required to compute the reachability answer, and the analysis question of interest.
+	the traditional techniques of a Dyck-Language and the Pushdown Automata Reachability Solver.
+	%This work seeks to establish the limitations of CFLR for program analysis by drawing a relationship between the languages employed for each question, 
+	%thus the state-machine required to compute the reachability answer, and the analysis question of interest.
+	For example, dominance of one basic block on the next is not an analysis for which Dyck-Reachability has been employed for, nor is there has there been work for why that is.
+	This work argues that with the current CFLR context, Dominance, and other analyses that require reasoning over multiple paths, represent a class of questions that cannot be solved.
+	Furthermore, the Automata required to solve the problem can bring insight into the analysis of interest including a best approach to optimizing an algorithm.
 \end{abstract}
 
 %%
@@ -46,27 +47,27 @@
 
 \section{Introduction}
 \label{sec:intro}
-TODO
+\input{intro}
 
 \section{Overview}
 \label{sec:over}
+\input{overview}
+
+\section{Motivating Example}
+\label{sec:example}
+\input{example}
+
+\section{Extended Context-Free Language Reachability}
+\label{sec:ecflr}
 TODO
 
-\section{Motivating Examples}
-\label{sec:examples}
-TODO
-
-\section{State-Machines for Reachability}
-\label{sec:sm}
-TODO
-
-\section{Analyses and Languages}
-\label{sec:analyses}
+\section{Automata and Analysis}
+\label{sec:automata}
 TODO
 
 \section{Related Work}
 \label{sec:related}
-TODO
+\input{related}
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -78,7 +79,7 @@ TODO
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
 \begin{acks}
-TODO
+	TODO
 \end{acks}
 
 %%

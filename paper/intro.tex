@@ -1,0 +1,12 @@
+Context-Free Language Reachability, introduced by Thomas Reps~\cite{reps_ilps_1997}, 
+is an approach to program analysis that leverages graph theory and context-free languages to achieve complex inter-procedural analysis.
+In Context-Free Language Reachability (CFLR), each edge in a graph is annotated with a terminal from a Context-Free Language.
+As a graph is traversed each terminal is concatenated together into a final string, 
+such that only paths which can both be reached by the structure of the graph and produce an accepted word in the language are considered ``reachable''.
+Using a simple Dyck-Language of balanced parenthesis, inter-procedural analysis is no longer ambiguous: 
+only paths calling function x, and therefore have $(_x$ in the string, may follow the return edge $)_x$.
+
+However, this paper argues that CFLR is limited in the analyses that it can do.
+Some analyses require reasoning over many paths, but CFLR's current formulation only considers \textit{the existence} of a single path between two vertices.
+Other analyses do not have a clear ``beginning'' and ``end'' to represent with the open and closed parenthesis, which has been the traditional language for many CFLR analyses.
+An analysis of these limitations, we argue, will help create a new approach for both generating a language for an analysis of interest and studying currently existing analyses.
