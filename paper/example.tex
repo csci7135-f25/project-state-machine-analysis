@@ -14,6 +14,29 @@ In all varieties listed above, the only property of interest is existence.
 There is no reasoning about paths themselves.
 
 The second limitation is that the traditional language for CFLR, the Dyck-Language of k numbers of balanced parenthesis, only works for analyses that have clear starts and ends.
-For analyses which are attempting to solve for those points, a graph could not be annotated with a Dyck-Language without first solving for those start and end points beforehand.
+Analyses which are attempting to solve for those points, their input graph could not be annotated with a Dyck-Language without first solving for those start and end points beforehand.
+
+\begin{figure}
+	\includegraphics[width=0.2\textwidth]{figs/CFG_Example.pdf}
+	\caption{A Control-Flow Graph for which traditional Context-Free Language Reachability cannot solve Dominance for. 
+Basic Block A dominates E \& F, but B only dominates E. C does not dominate anything.}
+	\label{fig:cfg}
+\end{figure}
+
+%Since CFLR is looking for the existence of a path between vertices of a graph, it is a powerful tool for demand-based analysis.
+%But weak for analyses for which no known demand-based algorithm exists, such as Dominance.
 
 Dominance Analysis on Control-Flow Graphs exhibits both of these limitations.
+In Figure \ref{fig:cfg}, it is difficult to use parenthesis to symbolize dominance. 
+Assume that we could know where to place the symbols to denote the beginning of the dominance and the end of dominance for A.
+For example, on the edges from A we can place $(_a$ and on the edges into F we can place $)_a$.
+If their positions are already known, it follows that dominance is already calculated for A since we know the region at which it dominates and does not.
+Annotating the graph for a separate solver to traverse it would then be redundant work.
+This is a contradiction that means that we cannot use a balanced language for this analysis.
+
+%Furthermore, there does not exist two edges to place the beginning and end of dominance for Basic Block B.
+%Even if we decide to expand our language to also accept any unclosed $(_x$ as accepted words, and annotate all edges with their source parenthesis
+%that would result in B dominating F which is not correct.
+
+Applying transformations on the input graph may be the next possible step, but in what way?
+The more processing steps done to the input graph before the final solver just bypasses the CFLR limitation by not using CFLR.
