@@ -1,0 +1,7 @@
+Over the course of this work, it has been described how traditional Context-Free Language Reachability is limited in the types of analyses it can solve.
+The work covers how Dominators for Control-Flow Analysis cannot be described by a Dyck-Language without pre-computing the answer before the reachability solver,
+and how changing the input graph for Dominators would be sidestepping the limitations by simply not using Context-Free Language Reachability.
+Following the limitations, we define a new class of Context-Free Language Reachability, namely the All-Paths type, and use this new class to propose
+a Strict Dominance Algorithm using the CFLR framework.
+The Strict Dominance Algorithm is then analyzed using automata theory to reason about 
+why the runtime complexity might be lower than the Cubic Bottleneck commonly associated with other analyses.

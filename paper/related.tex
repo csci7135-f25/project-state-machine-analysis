@@ -1,0 +1,31 @@
+\subsection{Automatas and the Cubic Bottleneck}
+The Cubic Bottleneck for program analysis has been a well-studied issue,
+and was one of the topics discussed in Rep's original CFLR paper~\cite{reps_ilps_1997}.
+Melski and Reps~\cite{melski_sigplan_1997}, and Kodumal and Aiken~\cite{kodumal_pldi_2004}, 
+study this issue from an conversion perspective between two analysis techniques, Set-Constraints and CFLR.
+Heintze and McAllester~\cite{heintze_lics_1997} approach the topic from a similar angle as this paper, using automata theory. 
+They argue that almost all analysis questions can be converted into 2-way Non-deterministic Pushdown Automata (2NPDA), 
+and since the late 1960s there has not been a sub-cubic algorithm for computing 2NPDAs.
+
+%Improved automatas for CFLR have been proposed by Alur et al.~\cite{alur_stoc_2004,alur_toplas_2005},
+%focused on optimizing for Dyck-Languages and the pushdown concept respectively.
+Visibly Pushdown Languages~\cite{alur_stoc_2004}, proposed by Alur and Madhusudan, 
+focus on dividing the automata's alphabet ($\Sigma$) into call symbols, return symbols, and internal symbols.
+Unless there is a call or return symbol, the stack is not used. 
+This allows usefull properties, such as determining whether a language is included in another for two Visibly Pushdown Automatas (VPAs).
+However, VPAs do not have a method of improving on the cubic bottleneck.
+
+Recursive State-Machines~\cite{alur_toplas_2005}, also proposed by Alur et al., 
+encode memory into the path of the automata rather that in a separate stack.
+States of a Recursive State-Machine can be state-machines as well as states.
+The improvements to traditional automata are similar to VPAs, 
+however they crucially provide the possibility for sub-cubic analysis.
+
+\subsection{Context-Free Language Reachability}
+Various developments in the field of Context-Free Language Reachability have taken place in the last couple of years.
+Zhang et al.~\cite{zhang_pldi_2013} exploit an equivalence property in bidirectional graphs for faster alias analysis.
+Ding et al.~\cite{ding_sas_2023} have formulated a method for composing multiple analyses into a single pass, 
+or dividing a single analysis into multiple pieces that can allow for faster exits.
+Lei et al.~\cite{lei_pldi_2023,lei_pldi_2024} propose methods of optimizing the input graph representing the analysis to speed up the solver.
+
+
