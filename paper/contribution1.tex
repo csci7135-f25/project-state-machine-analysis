@@ -1,0 +1,31 @@
+The six previously discussed variations of CFLR in Section \ref{sec:example} are quite powerful for demand-based analysis.
+By only computing for the existence of a path on nodes of interest, refined answers can be produced with less time than a holistic approach.
+
+For Dominance however they remain insufficient, as the analysis needs to compute all possible paths between two nodes and then find similarities in those paths.
+To solve the presented issue, a new type of Context-Free Language Reachability (CFLR) analysis is defined as follows.
+An \textit{All-Paths} variation on Context-Free Language Reachability is a solver divided into two parts, the reachable paths engine, and the paths analyzer.
+
+\begin{figure}
+
+\includegraphics[width=0.25\textwidth]{figs/CFG_Example2.pdf}
+\caption{The CFG from the previous example, where each Basic Block is annotated with the symbol that corresponds to its source Block.}
+\label{fig:a-cfg} %annotated cfg
+
+\end{figure}
+
+Applying the All-Paths, and Single-Source selecting node A, variation to Dominance Analysis, we can provide an almost trivial language for CFLR.
+In Figure \ref{fig:a-cfg}, each edge is labeled with its source node's name, and all words are accepted for our example Control-Flow Graph.
+Thus the word is now representing memory as well.
+
+For our example CFG in Fig. \ref{fig:a-cfg} all possible words between A and F are:
+\begin{itemize}
+
+\item ac
+\item abe
+\item abde
+
+\end{itemize}
+
+Our final pass on the paths would be a meet operator which produces all terminals of which are the same between the words.
+Therefore A dominates F, and we have an algorithm using the CFLR technique to calculate the strict dominance of each node. 
+Dominance is then the simple union of the final calculation with the target node.

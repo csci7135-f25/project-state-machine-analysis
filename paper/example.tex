@@ -13,11 +13,11 @@ It is not just that we must know whether or not a path exists, but the analysis 
 In all varieties listed above, the only property of interest is existence.
 There is no reasoning about paths themselves.
 
-The second limitation is that the traditional language for CFLR, the Dyck-Language of k numbers of balanced parenthesis, only works for analyses that have clear starts and ends.
+The second limitation is that the traditional language for CFLR, the Dyck-Language of k numbers of balanced parentheses, only works for analyses that have clear starts and ends.
 Analyses which are attempting to solve for those points, their input graph could not be annotated with a Dyck-Language without first solving for those start and end points beforehand.
 
 \begin{figure}
-	\includegraphics[width=0.2\textwidth]{figs/CFG_Example.pdf}
+	\includegraphics[width=0.25\textwidth]{figs/CFG_Example.pdf}
 	\caption{A Control-Flow Graph for which traditional Context-Free Language Reachability cannot solve Dominance for. 
 Basic Block A dominates E \& F, but B only dominates E. C does not dominate anything.}
 	\label{fig:cfg}
@@ -27,7 +27,7 @@ Basic Block A dominates E \& F, but B only dominates E. C does not dominate anyt
 %But weak for analyses for which no known demand-based algorithm exists, such as Dominance.
 
 Dominance Analysis on Control-Flow Graphs exhibits both of these limitations.
-In Figure \ref{fig:cfg}, it is difficult to use parenthesis to symbolize dominance. 
+In Figure \ref{fig:cfg}, it is difficult to use parentheses to symbolize dominance. 
 Assume that we could know where to place the symbols to denote the beginning of the dominance and the end of dominance for A.
 For example, on the edges from A we can place $(_a$ and on the edges into F we can place $)_a$.
 If their positions are already known, it follows that dominance is already calculated for A since we know the region at which it dominates and does not.

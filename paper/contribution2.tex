@@ -1,0 +1,36 @@
+\subsection{Runtime Analysis of the Single-Source All-Paths Dominator Algorithm}
+The CFLR strict dominance algorithm described above can calculate a target node's dominators in the worst-case sceniario of $O(e\cdot 2\log{v})$, 
+where e is the amount of edges in the graph and v is the total amount of vertices/nodes/basic-blocks.
+Each path is at worst the total amount of edges within the graph, must then be computed, and finally compared against each other to find similarity.
+Since a Control-Flow Graph limits outward edges from a vertice to two, the graph may at worst be a Binary-Search Tree.
+The height of a binary search tree is equivalent to $\log{v}$ and therefore may also have at most $\log{v}$ paths to follow.
+It is also interesting to note that this runtime is the same as the Lengauer-Tarjan Dominance Algorithm~\cite{lengauer_toplas_1979} 
+whose runtime efficiency is also $O(e\cdot\log{v})$.
+
+Note as well that there is a dynamic programming optimization possible for calculating dominators for nodes outside of the target node if the paths pass through them.
+Since the paths from A to F also include all paths from A to E, 
+calculating the strict dominators of E only considers all words that include its corresponding terminal (e), abe and abde. 
+Then obtain the subtring from the start of the word until before the terminal, ab and abd, and finally apply the final pass on the paths to produce the strict dominators A and B.
+This refines our algorithm to a Single-Source\&Target All-Paths variation of CFLR, from the Entry block to the Exit block.
+
+\subsection{Connections to Automata}
+We can relate our algorithm to an automata for more complete reasoning about the analysis.
+
+The runtime for a Regular Expression is at worst $O(w)$ where w is the amount of characters in the word.
+Considering this, we can construct a regex for our Dominance Path Solver, $L = a((b(d^?e^?)^?)|c)^?$.
+The path solver for the Control-Flow Graph is equivalent to a Finite State-Machine which represents the regex L.
+Since we require more than just a single path, we must repeat the regex over all $\log{v}$ words/paths.
+The connection between our path solver and Finite State-Mahcines, provides more reasoning on the runtime complexity, 
+as well as describes the space complexity as also being $O(e\cdot\log{v})$, where e is equivalent to w.
+
+To convert the CFLR Strict Dominance Algorithm for inter-procedural analysis, a Dyck-Language can be used to augment the regex for calls and returns.
+Augmenting the regex with balanced parentheses transforms our required path solver into a Pushdown Automata, 
+since Dyck-Languages cannot be solved by Finite State-Machines as they are not Regular.
+While this does increase the runtime complexity, the approach was trivial.
+Take an existing analysis and refine the language.
+
+Creating an analysis can also be informed by the memory requirements of the solution.
+If memory is bounded/finite, a Finite State-Machine solution may be the most applicable.
+Otherwise, unbounded memory and the existence of infinite length-words will require at minimum a Pushdown Automata, 
+as in the case of inter-procedural analysis.
+Working ``backwards'' from the space requirements of the analysis can provide a framework for constructing CFLR algorithms.
